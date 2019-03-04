@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Web.Hosting;
 using System.Web.Http;
 
 namespace IIS_RecycleTest.Controllers
@@ -9,7 +10,8 @@ namespace IIS_RecycleTest.Controllers
         // GET api/values
         public async Task<IEnumerable<string>> Get()
         {
-            await Task.Delay(15000);
+            await Task.Delay(10000);
+            //HostingEnvironment.QueueBackgroundWorkItem(ct => WorkSimulator.SimulateBackgroundTask());
             return new string[] { "value1", "value2" };
         }
 

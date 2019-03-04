@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IIS_RecycleTest_NET_Core.Controllers
@@ -15,6 +16,7 @@ namespace IIS_RecycleTest_NET_Core.Controllers
         public async Task<ActionResult<IEnumerable<string>>> Get()
         {
             await Task.Delay(10000);
+            //BackgroundJob.Enqueue(() => WorkSimulator.SimulateBackgroundTask());
             return new string[] { "value1", "value2" };
         }
 
